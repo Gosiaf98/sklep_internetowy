@@ -5,11 +5,12 @@
       <div class="font-weight-bold h5 float-left title mt-5">{{title}}</div>
     </router-link>
     <div class="float-left mt-5 quantity">
-      <b-icon icon="dash" class="icon float-left" font-scale="2"></b-icon>
+      <b-icon v-if="quantity>1" icon="dash" class="icon float-left" font-scale="2" @click="$emit('quantityMinus', id)"></b-icon>
       <div class="btn btn-secondary float-left">{{quantity}}</div>
-      <b-icon icon="plus" class="icon" font-scale="2"></b-icon>
+      <b-icon icon="plus" class="icon" font-scale="2" @click="$emit('quantityPlus', id)"></b-icon>
+      <b-icon icon="trash" class="icon ml-3" font-scale="2" @click="$emit('delete', id)"></b-icon>
     </div>
-    <div class="text-right mt-5">{{price}}zł</div>
+    <div class="text-right mt-5">{{(quantity * price).toFixed(2)}} zł</div>
   </div>
 </template>
 
