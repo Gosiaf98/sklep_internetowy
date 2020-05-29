@@ -2,26 +2,27 @@
   <div class="product">
     <img :src="require('../assets/'+ img +'.jpg')">
     <router-link class="link" :to="{name: 'Details', params:{productId: id}}">
-      <div class="font-weight-bold h5">{{name}}</div>
+      <div class="font-weight-bold h5">{{title}}</div>
     </router-link>
-    <div>
-      <div>{{price}}zł</div>
-      <b-button size="sm" variant="outline-success" class="mb-2">
-          Dodaj do koszyka
-      </b-button>
-    </div>
+    <div>{{price}}zł</div>
+    <b-button size="sm" variant="outline-success" class="mb-2" @click="addToBasket(id, title, img, price)">
+        Dodaj do koszyka
+    </b-button>
   </div>
 </template>
 
 <script>
+import addToBasketMixin from '../components/mixin.js'
+
 export default {
   name: 'Product',
   props: {
-    name: String,
+    title: String,
     img: String,
     price: Number,
     id: Number
-  }
+  },
+  mixins: [addToBasketMixin]
 }
 </script>
 

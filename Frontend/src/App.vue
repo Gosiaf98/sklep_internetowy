@@ -18,9 +18,11 @@
   <div id="app">
     <b-navbar toggleable type="dark" variant="success">
       <b-navbar-brand class="font-weight-bold"  href="/" center>SklepInternetowy</b-navbar-brand>
-      <b-button size="lg" variant="outline-light" class="mb-2">
-        <b-icon icon="cart4"></b-icon>
-      </b-button>
+      <router-link to="/basket">
+        <b-button size="lg" variant="outline-light" class="mb-2">
+          <b-icon icon="cart4"></b-icon>
+        </b-button>
+      </router-link>   
     </b-navbar>
     <router-view />
   </div>

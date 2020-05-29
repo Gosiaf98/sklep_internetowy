@@ -3,7 +3,10 @@
         <img :src="require('../assets/'+ product.imgCode +'.jpg')" class="pic">
         <div class="h3 font-weight-bold">{{product.title}}</div>
         <div class="font-italic mb-2">{{product.author}}</div>
-        <div class="font-weight-bold mb-4">{{product.price}}zł</div>
+        <div class="font-weight-bold mb-1">{{product.price}}zł</div>
+        <b-button size="sm" variant="outline-success" class=" mb-4" @click="addToBasket(product.id, product.title, product.imgCode, product.price)">
+          Dodaj do koszyka
+        </b-button>
         <div><b>Liczba stron:</b> {{product.pagesNum}}</div>
         <div v-if=product.softCover><b>Okładka:</b> miękka</div>
         <div v-else><b>Okładka:</b> twarda</div>
@@ -27,6 +30,7 @@
 
 <script>
 import axios from 'axios';
+import addToBasketMixin from '../components/mixin.js'
 
 export default {
   name: 'ProductDetails',
@@ -43,6 +47,7 @@ export default {
         vm.product = response.data;
       })
 
-  }
+  },
+  mixins: [addToBasketMixin]
 }
 </script>
