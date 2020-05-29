@@ -1,7 +1,9 @@
 <template>
   <div class="product">
     <img :src="require('../assets/'+ img +'.jpg')">
-    <div class="font-weight-bold h5">{{name}}</div>
+    <router-link class="link" :to="{name: 'Details', params:{productId: id}}">
+      <div class="font-weight-bold h5">{{name}}</div>
+    </router-link>
     <div>
       <div>{{price}}zł</div>
       <b-button size="sm" variant="outline-success" class="mb-2">
@@ -17,7 +19,8 @@ export default {
   props: {
     name: String,
     img: String,
-    price: String
+    price: Number,
+    id: Number
   }
 }
 </script>
@@ -27,7 +30,6 @@ export default {
     height: 45vh;
     width: 33.3%;
     padding: 20px 5px 0 5px;
-    display: inline-block;
     float: left;
   }
 
@@ -35,6 +37,10 @@ export default {
     height: 25vh;
     margin-bottom: 10px;
   }
+
+ .link{
+   color: black;
+ }
 
 
 </style>

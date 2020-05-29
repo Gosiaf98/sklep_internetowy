@@ -18,7 +18,7 @@ const routes = [
     component: Basket
   },
   {
-    path: '/details',
+    path: '/details/:productId',
     name: 'Details',
     component: ProductDetails
   }

@@ -1,9 +1,6 @@
 <template>
   <div class="product-list">
-    <Product name="Harry Potter i kamień filozoficzny" img="HP1" price="39.99"></Product>
-    <Product name="Harry Potter i komnata tajemnic" img="HP2" price="39.99"></Product>
-    <Product name="Harry Potter i więzień azkabanu" img="HP3" price="39.99"></Product>
-    <Product name="Harry Potter i czara ognia" img="HP4" price="39.99"></Product>
+    <Product v-for="product in products" :key="product.id" :name="product.title" :img="product.imgCode" :price="product.price" :id="product.id"></Product>
   </div>
 </template>
 
@@ -15,11 +12,26 @@
 
 <script>
 import Product from '../components/Product.vue'
+import axios from 'axios';
 
 export default {
   name: 'ProductList',
   components:{
     Product
+  },
+  data:function (){
+    return {
+      products: []  
+    }
+  },
+  created(){
+    let vm = this;
+    axios
+      .get('http://localhost:8001/api/products')
+      .then(function(response){
+        vm.products = response.data['hydra:member'];
+      })
+
   }
 }
 </script>
