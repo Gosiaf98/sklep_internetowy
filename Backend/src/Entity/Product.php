@@ -50,11 +50,6 @@ class Product
     private $description;
 
     /**
-     * @ORM\Column(type="integer")
-     */
-    private $quantity;
-
-    /**
      * @ORM\Column(type="string", length=255)
      */
     private $img_code;
@@ -132,18 +127,6 @@ class Product
     public function setDescription(?string $description): self
     {
         $this->description = $description;
-
-        return $this;
-    }
-
-    public function getQuantity(): ?int
-    {
-        return $this->quantity;
-    }
-
-    public function setQuantity(int $quantity): self
-    {
-        $this->quantity = $quantity;
 
         return $this;
     }

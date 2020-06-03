@@ -30,6 +30,7 @@ export default {
       .get('http://localhost:8001/api/products')
       .then(function(response){
         vm.products = response.data['hydra:member'];
+        console.log("tralalala");
       })
 
   }
